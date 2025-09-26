@@ -19,44 +19,52 @@ public class ClinicServiceImplJpa implements ClinicService {
 
     @Override
     public Integer addClinic(Clinic clinic) throws Exception {
-        // TODO Auto-generated method stub
-        return null;
+        return clinicRepository.save(clinic).getClinicId();
     }
 
     @Override
     public void deleteClinic(int clinicId) throws Exception {
-        // TODO Auto-generated method stub
-        
+       if(!clinicRepository.existsById(clinicId)){
+        throw new Exception();
+       }
+       clinicRepository.deleteById(clinicId);
     }
 
     @Override
     public List<Clinic> getAllClinicByDoctorId(int doctorId) throws Exception {
-        // TODO Auto-generated method stub
-        return ClinicService.super.getAllClinicByDoctorId(doctorId);
+        return clinicRepository.findClinicByDoctorId(doctorId);
     }
 
     @Override
     public List<Clinic> getAllClinicByLocation(String location) throws Exception {
-        // TODO Auto-generated method stub
-        return ClinicService.super.getAllClinicByLocation(location);
+        return clinicRepository.findAllByLocation(location);
     }
 
     @Override
     public List<Clinic> getAllClinics() throws Exception {
-        // TODO Auto-generated method stub
-        return null;
+        return clinicRepository.findAll();
     }
 
     @Override
     public Clinic getClinicById(int clinicId) throws Exception {
-        // TODO Auto-generated method stub
-        return null;
+       return clinicRepository.findByClinicId(clinicId);
     }
 
     @Override
     public void updateClinic(Clinic clinic) throws Exception {
-        // TODO Auto-generated method stub
-        
+       Clinic c = clinicRepository.findByClinicId(clinic.getClinicId());
+       if(c == null){
+        throw new Exception();
+       }        
+
+       c.setClinicName(clinic.getClinicName());
+       c.setContactNumber(clinic.getContactNumber());
+       c.setLocation(clinic.getLocation());
+       c.setDoctorId(clinic.getDoctorId());
+       c.setEstablishedYear(clinic.getEstablishedYear());
+    //    c.setDoctor(clinic.getDoctor());
+
+       clinicRepository.save(c);
     }
 
     
