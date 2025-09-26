@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Doctor implements Comparable<Doctor> {
@@ -19,6 +20,9 @@ public class Doctor implements Comparable<Doctor> {
     private String contactNumber;
     private String email;
     private int yearsOfExperience;
+
+    // @ManyToOne
+    // private Clinic clinic;
 
     public Doctor() {
     }
@@ -86,6 +90,14 @@ public class Doctor implements Comparable<Doctor> {
         // return this.getYearsOfExperience() - o.getYearsOfExperience();
         return Comparator.comparingInt(Doctor::getYearsOfExperience).compare(this, o);
     }
+
+    // public Clinic getClinic() {
+    //     return clinic;
+    // }
+
+    // public void setClinic(Clinic clinic) {
+    //     this.clinic = clinic;
+    // }
 
     
 }

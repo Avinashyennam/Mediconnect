@@ -1,9 +1,12 @@
 package com.wecp.progressive.entity;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Clinic {
@@ -16,6 +19,9 @@ public class Clinic {
     private int doctorId;
     private String contactNumber;
     private int establishedYear;
+
+    @OneToMany
+    private List<Doctor> doctors;
 
     public Clinic(int clinicId, String clinicName, String location, int doctorId, String contactNumber,
             int establishedYear) {
@@ -78,5 +84,12 @@ public class Clinic {
         this.establishedYear = establishedYear;
     }
 
+    public List<Doctor> getDoctors() {
+        return doctors;
+    }
+
+    public void setDoctors(List<Doctor> doctors) {
+        this.doctors = doctors;
+    }
     
 }

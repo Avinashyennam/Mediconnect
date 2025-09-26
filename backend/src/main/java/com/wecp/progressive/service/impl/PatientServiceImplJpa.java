@@ -1,5 +1,6 @@
 package com.wecp.progressive.service.impl;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,10 +30,10 @@ public class PatientServiceImplJpa implements PatientService {
 
     @Override
     public void deletePatient(int patientId) throws PatientNotFoundException {
-        Optional<Patient> p = patientRepository.findById(patientId);
-        if(!p.isPresent()){
-            throw new PatientNotFoundException();
-        }
+        // Optional<Patient> p = patientRepository.findById(patientId);
+        // if(!p.isPresent()){
+        //     throw new PatientNotFoundException();
+        // }
 
         patientRepository.deleteById(patientId);
     }
@@ -44,7 +45,10 @@ public class PatientServiceImplJpa implements PatientService {
 
     @Override
     public List<Patient> getAllPatientSortedByName() throws Exception {
-       return patientRepository.getAllPatientSortedByName();
+    //    return patientRepository.getAllPatientSortedByName();
+       List<Patient> list = patientRepository.findAll();
+        list.sort(Comparator.comparing(Patient::getFullName));
+        return (list);
     }
 
     @Override
@@ -64,6 +68,9 @@ public class PatientServiceImplJpa implements PatientService {
 
          
         Patient p = patientRepository.findByPatientId(patient.getPatientId());
+        if(p == null){
+            throw new Exception();
+        }
         p.setFullName(patient.getFullName());
         p.setEmail(patient.getEmail());
         p.setDateOfBirth(patient.getDateOfBirth());

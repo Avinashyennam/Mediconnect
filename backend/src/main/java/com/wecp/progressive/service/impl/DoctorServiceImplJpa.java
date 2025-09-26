@@ -1,6 +1,9 @@
 package com.wecp.progressive.service.impl;
 
 import java.sql.SQLException;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,38 +24,53 @@ public class DoctorServiceImplJpa implements DoctorService  {
 
     @Override
     public Integer addDoctor(Doctor doctor) throws SQLException {
-        // TODO Auto-generated method stub
-        return null;
+        Doctor doc = doctorRepository.save(doctor);
+        return doc.getDoctorId();
     }
 
     @Override
     public void deleteDoctor(int doctorId) throws Exception {
-        // TODO Auto-generated method stub
-        DoctorService.super.deleteDoctor(doctorId);
+        if(!doctorRepository.existsById((Integer)doctorId)){
+            throw new Exception();
+        }
+        doctorRepository.deleteById((Integer)doctorId);
     }
 
     @Override
     public List<Doctor> getAllDoctors() throws SQLException {
-        // TODO Auto-generated method stub
-        return null;
+        return doctorRepository.findAll();
     }
 
     @Override
     public Doctor getDoctorById(int doctorId) throws Exception {
-        // TODO Auto-generated method stub
-        return DoctorService.super.getDoctorById(doctorId);
+        return doctorRepository.findByDoctorId(doctorId);
     }
 
     @Override
     public List<Doctor> getDoctorSortedByExperience() throws Exception {
-        // TODO Auto-generated method stub
-        return null;
+        List<Doctor> doctors = doctorRepository.findAll();
+        Collections.sort(doctors, new Comparator<Doctor>() {
+            @Override
+            public int compare(Doctor d1, Doctor d2){
+                return d1.getYearsOfExperience() - d2.getYearsOfExperience();
+            }
+        });
+        return doctors;
     }
 
     @Override
     public void updateDoctor(Doctor doctor) throws Exception {
-        // TODO Auto-generated method stub
-        DoctorService.super.updateDoctor(doctor);
+        Doctor doc = doctorRepository.findByDoctorId(doctor.getDoctorId());
+        if(doc == null){
+            throw new Exception();
+        }
+        doc.setFullName(doctor.getFullName());
+        doc.setContactNumber(doctor.getContactNumber());
+        doc.setEmail(doctor.getEmail());
+        doc.setSpecialty(doctor.getSpecialty());
+        doc.setYearsOfExperience(doctor.getYearsOfExperience());
+
+        doctorRepository.save(doc);
     }
 
     
