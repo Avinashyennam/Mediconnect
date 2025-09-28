@@ -69,6 +69,10 @@ public class DoctorController {
     @DeleteMapping("/{doctorId}")
     public ResponseEntity<Void> deleteDoctor(@PathVariable int doctorId) {
         try {
+            Doctor doc = doctorService.getDoctorById(doctorId);
+            if(doc == null){
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
             doctorService.deleteDoctor(doctorId);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (Exception e) {
