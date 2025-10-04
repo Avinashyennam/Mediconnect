@@ -1,11 +1,11 @@
 package com.wecp.progressive.entity;
-
+ 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-
+ 
 @Entity
 public class User {
     @Id
@@ -18,14 +18,14 @@ public class User {
     private Patient patient;
     @OneToOne
     private Doctor doctor;
-    public User(Integer userId, String username, String password, String role, Patient patient, Doctor doctor) {
-        this.userId = userId;
-        this.username = username;
-        this.password = password;
-        this.role = role;
-        this.patient = patient;
-        this.doctor = doctor;
-    }
+    // public User(Integer userId, String username, String password, String role, Patient patient, Doctor doctor) {
+    //     this.userId = userId;
+    //     this.username = username;
+    //     this.password = password;
+    //     this.role = role;
+    //     this.patient = patient;
+    //     this.doctor = doctor;
+    // }
     public Integer getUserId() {
         return userId;
     }

@@ -18,8 +18,13 @@ import io.jsonwebtoken.SignatureAlgorithm;
 @Component
 public class JwtUtil {
 
-    @Autowired
+    // @Autowired
     private UserRepository userRepository;
+    
+
+    public JwtUtil(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     private String SECRET_KEY = "secretKey00000000000000000000000000000";
 

@@ -5,7 +5,7 @@ public class LoginResponse {
    private String roles;
    private Integer userId;
    private Integer patientId;
-   private Integer doctorId;   
+   private Integer doctorId;
    public LoginResponse(String token, String roles, Integer userId, Integer patientId, Integer doctorId) {
       this.token = token;
       this.roles = roles;
