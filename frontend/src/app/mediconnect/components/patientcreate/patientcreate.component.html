@@ -1,0 +1,31 @@
+<!-- <div>
+    <form>
+        <input type="number" name="patientId" id="patientId">
+        <input type="text" name="fullName" id="fullName">
+        <input type="date" name="dob" id="dob">
+        <input type="text" name="contact" id="contact">
+        <input type="email" name="email" id="email">
+        <input type="text" name="address" id="address">
+    </form>
+    <button (click) = "onSubmit()">Submit</button>
+    <button (click) = "resetForm()">Reset</button>
+    <p></p>
+</div> -->
+
+<div>
+    <form>
+      <input type="number" name="patientId" id="patientId" [(ngModel)]="patient.patientId" />
+      <input type="text" name="fullName" id="fullName" [(ngModel)]="patient.fullName" />
+      <input type="date" name="dateOfBirth" id="dateOfBirth" [(ngModel)]="patient.dateOfBirth" />
+      <input type="text" name="contactNumber" id="contactNumber" [(ngModel)]="patient.contactNumber" />
+      <input type="email" name="email" id="email" [(ngModel)]="patient.email" />
+      <input type="text" name="address" id="address" [(ngModel)]="patient.address" />
+    </form>
+  
+    <button (click)="onSubmit()">Submit</button>
+    <button (click)="resetForm()">Reset</button>
+  
+    <!-- ✅ Message element for test -->
+    <p id="message" >{{ message }}</p>
+    <!-- <p id="message">{{ message }}</p> -->
+  </div>
