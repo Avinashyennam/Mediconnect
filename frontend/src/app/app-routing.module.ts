@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+// import { PatientCreateComponent } from './mediconnect/components/patientcreate/patientcreate.component';
 
 const routes: Routes = [
   {
@@ -10,11 +11,12 @@ const routes: Routes = [
     path: 'mediconnect',
     loadChildren: () => import('./mediconnect/mediconnect.module').then((m) => m.MediconnectModule),
   },
-  {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: '/auth',  // Redirect to 'auth' route by default
-  }
+  // {
+  //   path: '',
+  //   pathMatch: 'full',
+  //   redirectTo: '/auth', 
+  // }
+  
 ];
 
 @NgModule({

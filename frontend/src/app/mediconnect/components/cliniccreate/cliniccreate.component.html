@@ -1,0 +1,55 @@
+<div class="container">
+  <form [formGroup]="clinicForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label>Clinic ID:</label>
+      <input type="number" formControlName="clinicId" />
+      <div *ngIf="submitted && clinicForm.controls['clinicId'].invalid">
+        Clinic ID is required and must be greater than 0.
+      </div>
+    </div>
+
+    <div>
+      <label>Clinic Name:</label>
+      <input type="text" formControlName="clinicName" />
+      <div *ngIf="submitted && clinicForm.controls['clinicName'].invalid">
+        Clinic Name is required and must be at least 2 characters.
+      </div>
+    </div>
+
+    <div>
+      <label>Location:</label>
+      <input type="text" formControlName="location" />
+      <div *ngIf="submitted && clinicForm.controls['location'].invalid">
+        Location is required.
+      </div>
+    </div>
+
+    <div>
+      <label>Contact Number:</label>
+      <input type="text" formControlName="contactNumber" />
+      <div *ngIf="submitted && clinicForm.controls['contactNumber'].invalid">
+        Contact Number must be exactly 10 digits.
+      </div>
+    </div>
+
+    <div>
+      <label>Established Year:</label>
+      <input type="text" formControlName="establishedYear" />
+      <div *ngIf="submitted && clinicForm.controls['establishedYear'].invalid">
+        Enter a valid year (e.g., 1990, 2020).
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="clinicForm.invalid">Submit</button>
+    <button [routerLink]="['/dashboard']">Back to dashboard</button>
+    <button type="button" (click)="resetForm()">Reset</button>
+
+    <p *ngIf="successMessage" class="success-message">{{ successMessage }}</p>
+    <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+
+    <!-- <p *ngIf="successMessage" class="success-message">{{successMessage}}</p>
+<p *ngIf="errorMessage" class="error-message">{{errorMessage}}</p> -->
+    <!-- <div [hidden]="successMessage.length === 0" class="success">{{ successMessage }}</div>
+<div [hidden]="errorMessage.length === 0" class="error">{{ errorMessage }}</div> -->
+  </form>
+</div>
