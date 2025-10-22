@@ -1,0 +1,59 @@
+# POST http://localhost:5000/user/login
+# Content-Type: application/json
+
+# {
+#     "username": "doctor",
+#     "password": "Doctor@123"
+# }
+
+GET http://localhost:5000/doctor
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiRE9DVE9SIiwic3ViIjoiZG9jdG9yIiwiaWF0IjoxNzYxMTA4MDUzLCJleHAiOjE3NjExOTQ0NTN9.5JixiBrBsB37AROFk8PijXOPPcpSPiuv4EX6RsnmmkE
+
+# GET http://localhost:5000/doctor
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiZG9jdG9yIiwic3ViIjoiZGFtb24iLCJpYXQiOjE3NTk5NDU1MjEsImV4cCI6MTc2MDAzMTkyMX0.cIwf4aAMy4YceTVvvqdQXtlux0_IUPwHDkFYscylWy0
+
+# {
+#     "fullName": "Avinash Yennam",
+#      "specialty": "Neuro Surgeon",
+#   "contactNumber": "9876543212",
+#   "email": "yennam@gmail.com",
+#   "yearsOfExperience": 6
+# }
+
+
+
+# POST http://localhost:5000/user/register
+# Content-Type: application/json
+
+# {
+#     "username": "damon",
+#     "password": "damon123",
+#      "role": "doctor",
+#      "fullName": "Damon Salvatour",
+#      "contactNumber": "9876543212",
+#      "email": "damon@gmail.com",
+#      "address": "Mystic falls",
+#      "dateOfBirth": "23-10-2001",
+#      "specialty": "Surgeon",
+#      "yearsOfExperience": 5
+# }
+
+# {
+#     "fullName": "Bishnu raut",
+#     "dateOfBirth": "23-10-2001",
+#     "contactNumber": "9876543212",
+#     "email": "bishnu@gmail.com",
+#     "address": "puri"
+# }
+
+
+    # "role": "patient",
+    # "fullName": "Bishnu raut",
+    # "contactNumber": "9876543212",
+    # "email": "bishnu@gmail.com",
+    # "address": "puri",
+    # "dateOfBirth": "23-10-2001",
+    # "specialty": "Surgeon",
+    # "yearsOfExperience": 5
