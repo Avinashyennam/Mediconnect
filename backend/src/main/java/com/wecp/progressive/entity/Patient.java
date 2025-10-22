@@ -16,7 +16,7 @@ public class Patient implements Comparable<Patient> {
     private Integer patientId;
     
     private String fullName;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+    // @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private Date dateOfBirth;
     private String contactNumber;
     private String email;

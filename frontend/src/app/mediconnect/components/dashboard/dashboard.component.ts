@@ -87,7 +87,7 @@ export class DashboardComponent implements OnInit {
 
     deleteClinic(clinicId: number) {
         this.mediService.deleteClinic(clinicId).subscribe((data) => {
-
+            this.clinics = this.clinics.filter((clinic)=> clinic.clinicId !== clinicId);
         })
     }
 

@@ -8,7 +8,7 @@
                     <div
                         class="card-header bg-gradient bg-primary text-white d-flex justify-content-between align-items-center">
                         <h5 class="mb-0">Patient Profile</h5>
-                        <span class="badge bg-light text-primary">{{ patientDetails.patientId }}</span>
+                        <!-- <span class="badge bg-light text-primary">{{ patientDetails.patientId }}</span> -->
                     </div>
                     <div class="card-body">
                         <h5 class="card-title mb-2">{{ patientDetails.fullName }}</h5>
@@ -18,7 +18,7 @@
                             <i class="bi bi-telephone-fill me-2 text-primary"></i><strong>Phone:</strong> {{
                             patientDetails.contactNumber }}<br>
                             <i class="bi bi-calendar-heart-fill me-2 text-primary"></i><strong>DOB:</strong> {{
-                            patientDetails.dateOfBirth }}
+                            patientDetails.dateOfBirth | date }}
                         </p>
                         <div class="d-flex gap-2 mt-3">
                             <button class="btn btn-outline-primary" (click)="navigateToEditPatient()">
@@ -133,27 +133,6 @@
             <h5>Your Clinics</h5>
             <button class="btn btn-primary" (click)="createClinic()">Create Clinic</button>
         </div>
-        <!-- <div *ngIf="clinics.length !== 0; else noClinics">
-            <div class="row">
-                <div class="col-md-4 mb-3" *ngFor="let clinic of clinics">
-                    <div class="card h-100" (click)="onClinicSelect(clinic)">
-                        <div class="card-body">
-                            <h6 class="card-title">{{ clinic.clinicName }}</h6>
-                            <p class="card-text">{{ clinic.location }}</p>
-                            <div class="d-flex justify-content-between mt-3">
-                                <button class="btn btn-sm btn-outline-primary"
-                                    [routerLink]="['/clinic-edit', clinic.clinicId]">Edit</button>
-                                <button class="btn btn-sm btn-outline-danger"
-                                    (click)="deleteClinic(clinic.clinicId)">Delete</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <ng-template #noClinics>
-            <p class="text-muted">No Clinics available.</p>
-        </ng-template> -->
 
         <div *ngIf="clinics.length !== 0; else noClinics">
             <div class="row">
@@ -183,10 +162,10 @@
 
 
                                     <!-- Delete Button -->
-                                    <button class="btn btn-sm btn-danger mt-2"
+                                    <!-- <button class="btn btn-sm btn-danger mt-2"
                                         (click)="cancelAppointment(appt)">
                                         Delete
-                                    </button>
+                                    </button> -->
 
                                 </li>
                             </ul>

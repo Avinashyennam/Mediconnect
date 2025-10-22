@@ -25,6 +25,8 @@ export class MediConnectService {
   }
 
   updatePatient(patient: PatientDTO): Observable<Patient> {
+    // console.log("patient dob: ",patient.dateOfBirth);
+    // return of();
     return this.http.put<Patient>(`${this.baseUrl}/patient/${patient.patientId}`, patient);
   }
 
