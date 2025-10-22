@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/clinic")
@@ -36,7 +37,12 @@ public class ClinicController {
     @GetMapping("/{clinicId}")
     public ResponseEntity<Clinic> getClinicById(@PathVariable int clinicId) {
         try {
-            return new ResponseEntity<>(clinicService.getClinicById(clinicId), HttpStatus.OK);
+            Clinic clinic = clinicService.getClinicById(clinicId);
+            if(clinic == null){
+                return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+            }
+            // return new ResponseEntity<>(clinicService.getClinicById(clinicId), HttpStatus.OK);
+            return new ResponseEntity<>(clinic, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -68,7 +74,8 @@ public class ClinicController {
     @DeleteMapping("/{clinicId}")
     public ResponseEntity<Void> deleteClinic(@PathVariable int clinicId) {
         try {
-            clinicService.getAllClinics();
+            // clinicService.getAllClinics();
+            clinicService.deleteClinic(clinicId);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

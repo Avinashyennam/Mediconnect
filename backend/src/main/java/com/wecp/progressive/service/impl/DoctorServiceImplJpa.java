@@ -70,7 +70,8 @@ public class DoctorServiceImplJpa implements DoctorService  {
 
     @Override
     public void updateDoctor(Doctor doctor) throws Exception {
-        Doctor doc = doctorRepository.findByEmail(doctor.getEmail());
+        // Doctor doc = doctorRepository.findByEmail(doctor.getEmail());
+        Doctor doc = doctorRepository.findByDoctorId(doctor.getDoctorId());
         // if(doc == null){
         //     throw new Exception();
         // }
@@ -82,6 +83,4 @@ public class DoctorServiceImplJpa implements DoctorService  {
 
         doctorRepository.save(doc);
     }
-
-    
 }

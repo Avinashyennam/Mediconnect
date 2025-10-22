@@ -90,6 +90,7 @@ export class ClinicEditComponent implements OnInit {
                 clinicId: this.clinicId,
                 ...this.clinicForm.value,
                 doctorId: this.doctorId
+                // doctor: this.doctor
             };
             
             this.mediService.updateClinic(updatedClinic).subscribe({

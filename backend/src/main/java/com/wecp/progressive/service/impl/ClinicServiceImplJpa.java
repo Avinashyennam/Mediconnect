@@ -14,14 +14,15 @@ import com.wecp.progressive.service.ClinicService;
 public class ClinicServiceImplJpa implements ClinicService {
     // @Autowired
     private ClinicRepository clinicRepository;
-    public ClinicServiceImplJpa(ClinicRepository clinicRepository){
+
+    public ClinicServiceImplJpa(ClinicRepository clinicRepository) {
         this.clinicRepository = clinicRepository;
     }
 
     @Override
     public Integer addClinic(Clinic clinic) throws Exception {
         Clinic cl = clinicRepository.findByClinicName(clinic.getClinicName());
-        if(cl != null){
+        if (cl != null) {
             throw new ClinicAlreadyExistsException("Clinic already exists");
         }
         return clinicRepository.save(clinic).getClinicId();
@@ -29,10 +30,10 @@ public class ClinicServiceImplJpa implements ClinicService {
 
     @Override
     public void deleteClinic(int clinicId) throws Exception {
-       if(!clinicRepository.existsById(clinicId)){
-        throw new Exception();
-       }
-       clinicRepository.deleteById(clinicId);
+        if (!clinicRepository.existsById(clinicId)) {
+            throw new Exception();
+        }
+        clinicRepository.deleteById(clinicId);
     }
 
     @Override
@@ -42,6 +43,7 @@ public class ClinicServiceImplJpa implements ClinicService {
 
     @Override
     public List<Clinic> getAllClinicByLocation(String location) throws Exception {
+        System.out.println(location);
         return clinicRepository.findAllByLocation(location);
     }
 
@@ -52,25 +54,25 @@ public class ClinicServiceImplJpa implements ClinicService {
 
     @Override
     public Clinic getClinicById(int clinicId) throws Exception {
-       return clinicRepository.findByClinicId(clinicId);
+        return clinicRepository.findByClinicId(clinicId);
     }
 
     @Override
     public void updateClinic(Clinic clinic) throws Exception {
-       Clinic c = clinicRepository.findByClinicId(clinic.getClinicId());
-       if(c == null){
-        throw new Exception();
-       }        
+        Clinic c = clinicRepository.findByClinicId(clinic.getClinicId());
+        if (c == null) {
+            throw new Exception();
+        }
 
-       c.setClinicName(clinic.getClinicName());
-       c.setContactNumber(clinic.getContactNumber());
-       c.setLocation(clinic.getLocation());
-       c.setDoctorId(clinic.getDoctorId());
-       c.setEstablishedYear(clinic.getEstablishedYear());
-    //    c.setDoctor(clinic.getDoctor());
+        c.setClinicName(clinic.getClinicName());
+        c.setContactNumber(clinic.getContactNumber());
+        c.setLocation(clinic.getLocation());
+        c.setDoctorId(clinic.getDoctorId());
+        // c.setDoctorId(clinic.getDoctor().getDoctorId());
+        c.setEstablishedYear(clinic.getEstablishedYear());
+        // c.setDoctor(clinic.getDoctor());
 
-       clinicRepository.save(c);
+        clinicRepository.save(c);
     }
 
-    
 }

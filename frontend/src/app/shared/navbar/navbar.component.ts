@@ -6,16 +6,16 @@ import { Router } from "@angular/router";
     templateUrl: './navbar.component.html',
     styleUrls: ['./navbar.component.scss'],
 })
-export class NavBarComponent implements OnInit{
-    role: string | null;
-    isAuthenticated: boolean = false;
+export class NavBarComponent {
+    role: string | null = localStorage.getItem('role');
+    isAuthenticated: boolean = localStorage.getItem('token') ? true : false;
 
     constructor(private router: Router){}
 
-    ngOnInit(): void {
-        this.isAuthenticated = localStorage.getItem('token') ? true : false;
-        this.role = localStorage.getItem('role');
-    }
+    // ngOnInit(): void {
+    //     this.isAuthenticated = localStorage.getItem('token') ? true : false;
+    //     this.role = localStorage.getItem('role');
+    // }
 
     logout() {
         localStorage.removeItem('token');

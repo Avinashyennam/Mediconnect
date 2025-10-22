@@ -20,7 +20,7 @@ public class PatientServiceImplJpa implements PatientService {
     // @Autowired
     private PatientRepository patientRepository;
 
-    public PatientServiceImplJpa(PatientRepository patientRepository){
+    public PatientServiceImplJpa(PatientRepository patientRepository) {
         this.patientRepository = patientRepository;
     }
 
@@ -40,7 +40,7 @@ public class PatientServiceImplJpa implements PatientService {
     @Override
     public void deletePatient(int patientId) throws PatientNotFoundException {
         // Optional<Patient> p = patientRepository.findById(patientId);
-        if(!patientRepository.existsById(patientId)){
+        if (!patientRepository.existsById(patientId)) {
             throw new PatientNotFoundException("Patient not found");
         }
 
@@ -56,8 +56,8 @@ public class PatientServiceImplJpa implements PatientService {
 
     @Override
     public List<Patient> getAllPatientSortedByName() throws Exception {
-    //    return patientRepository.getAllPatientSortedByName();
-       List<Patient> list = patientRepository.findAll();
+        // return patientRepository.getAllPatientSortedByName();
+        List<Patient> list = patientRepository.findAll();
         list.sort(Comparator.comparing(Patient::getFullName));
         return (list);
     }
@@ -71,24 +71,25 @@ public class PatientServiceImplJpa implements PatientService {
     @Override
     public Patient getPatientById(int patientId) throws Exception {
         Patient p = patientRepository.findByPatientId(patientId);
-        if(p == null){
+        if (p == null) {
             throw new PatientNotFoundException("Patient not found");
         }
-        
+
         return p;
     }
 
     @Override
     public void updatePatient(Patient patient) throws Exception {
 
-         
-        Patient p = patientRepository.findByEmail(patient.getEmail());
-        System.out.println("patit in service: "+p);
+        // Patient p = patientRepository.findByEmail(patient.getEmail());
+        Patient p = patientRepository.findById(patient.getPatientId()).get();
+        // System.out.println("patit in service: " + p);
         // if(p == null){
-        //     throw new PatientNotFoundException("Patient not found");
+        // throw new PatientNotFoundException("Patient not found");
         // }
         p.setFullName(patient.getFullName());
         p.setEmail(patient.getEmail());
+        // System.out.println(patient.getDateOfBirth());
         p.setDateOfBirth(patient.getDateOfBirth());
         p.setContactNumber(patient.getContactNumber());
         p.setAddress(patient.getAddress());

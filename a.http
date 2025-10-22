@@ -6,9 +6,36 @@
 #     "password": "Doctor@123"
 # }
 
-GET http://localhost:5000/doctor
+GET http://localhost:5000/clinic/doctor/5
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiRE9DVE9SIiwic3ViIjoiZG9jdG9yIiwiaWF0IjoxNzYxMTA4MDUzLCJleHAiOjE3NjExOTQ0NTN9.5JixiBrBsB37AROFk8PijXOPPcpSPiuv4EX6RsnmmkE
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiRE9DVE9SIiwic3ViIjoiZG9jdG9yIiwiaWF0IjoxNzYxMTUwNjI4LCJleHAiOjE3NjEyMzcwMjh9.OwpGNLFHCr1bVoJETPPTTeXXZLgdM4jC8MNCVPrzNB8
+
+# {
+#     "clinicId": 15,
+#   "clinicName": "Vasudeva Hospital",
+#   "location": "vemulawada",
+#   "contactNumber": "9876543211",
+#   "establishedYear": 2017,
+#   "doctorId": 1
+# }
+
+# "doctorId": 5,
+# {
+#     "patientId": 1,
+#     "fullName": "Lti mindtree",
+#     "dateOfBirth": "17-04-2019",
+#     "contactNumber": "7607071130",
+#     "email": "sample798@gmail.com",
+#     "address": "odisha"
+#   }
+
+# {
+#     "fullName": "Gautam verma",
+#     "specialty": "Surgeon",
+#     "contactNumber": "7607071130",
+#     "email": "developergautam41@gmail.com",
+#     "yearsOfExperience": 2
+#   }
 
 # GET http://localhost:5000/doctor
 # Content-Type: application/json
